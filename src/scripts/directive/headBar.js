@@ -11,8 +11,7 @@ angular.module('app').directive('appHeadBar',function () {
     link:function ($scope) {
       $scope.back=function(){
         window.history.back();
-      }
+      };
     }
   }
 })
- 
