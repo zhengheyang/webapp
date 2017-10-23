@@ -31,6 +31,7 @@ gulp.task('json',function () {
 
 gulp.task('less',function () {
     gulp.src(app.srcPath+'style/index.less')
+        .pipe($.plumber())
         .pipe($.less())
         .pipe(gulp.dest(app.devPath+'css'))
         .pipe($.cssmin())
@@ -40,9 +41,10 @@ gulp.task('less',function () {
 
 gulp.task('js',function () {
   gulp.src(app.srcPath+'scripts/**/*.js')
+  .pipe($.plumber())
   .pipe($.concat('index.js'))
   .pipe(gulp.dest(app.devPath+'js'))
-  .pipe($.uglify())
+  // .pipe($.uglify())
   .pipe(gulp.dest(app.prdPath+'js'))
   .pipe($.connect.reload());
 })
@@ -68,7 +70,7 @@ gulp.task('serve',['build'],function () {
     livereload:true,
     port:4444
   });
-  open('http://localhost:1234');
+  open('http://localhost:4444');
 
   gulp.watch('bower_components/**/*',['lib'])
   gulp.watch(app.srcPath+'**/*.html',['html'])
