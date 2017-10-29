@@ -15,10 +15,10 @@ angular.module('app')
   return {
     put:function (key,value) {
       $cookies.put(key,value);
-    };
+    },
     get:function (key) {
       return $cookies.get(key);
-    };
+    },
     remove:function(key){
       $cookies.remove(key);
     }
